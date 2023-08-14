@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fruits Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    
+    <style>
+      #base-cart-label {
+        position: relative;
+        right: 15px;
+        bottom: 10px;
+      }
+    </style>
+
+    <div class="ui huge blue inverted top fixed compact menu">
+      <div class="header item">Fruits Shop</div>
+      <a href="{% url 'home' %}" class="item">Home</a>
+      <a href="{% url 'index' %}" class="item">Products</a>
+      <div class="right menu">
+        <a class="item">
+          <i class="cart icon"></i>
+          <div class="ui red circular tiny label" id="base-cart-label">22</div>
+        </a>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10%;"></div>
+
+    <div class="ui container">
+      {% block content %}
+    
+      {% endblock  %}
+    </div>
+
+    <div style="padding-bottom: 10%;"></div>
+
+    <script>
+      let addToCartButtons = document.getElementsByClassName("add-to-cart-buttons");
+
+        for (i = 0; i < addToCartButtons.length; i++) {
+
+          let element = addToCartButtons[i];
+
+          element.addEventListener("click", () => {
+            let productId = element.dataset.product;
+            console.log(`ID:${productId}`);
+          });
+
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      $(document).ready(() => {
+
+        let homeButton = $('#home-button');
+        const storeClass = (element) => {
+          return element.attr('class');
+        }
+
+        homeButton.hover(() => {
+          homeButton.removeClass(storeClass(homeButton)).addClass('ui large blue button');
+        }, () => {
+          homeButton.removeClass(storeClass(homeButton)).addClass('ui large blue basic button');
+        });
+
+      });
+    </script>
+  </body>
+</html>

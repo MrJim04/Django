@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/premium-photo/fresh-fruit-background-as-healthy-eating-dieting-concept-winter-assortment-top-view_501761-506.jpg");
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover; /* Resize the background image to cover the entire container */
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3); /* Set the overlay opacity as needed */
+          }
+        #home-segment {
+            padding-top: 15%;
+        }
+    </style>
+    <div class="ui vertical masthead center aligned segment" id="home-segment">
+        <div class="ui text container">
+            <h1 class="ui header">
+                Freshness Fruits, Served Daily at Your Local Fruits Shop!
+            </h1>
+            <h3>Experience unbeatable savings with 100% off for the first 1000 customers, making your fruit shopping even sweeter!</h3>
+            <a href="{% url 'index' %}" class="ui large blue basic button" id="home-button">Order now<i class="right arrow icon"></i></a>
+        </div>
+    </div>
+{% endblock %}
